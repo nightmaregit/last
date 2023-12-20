@@ -16,6 +16,7 @@ function TambahBuku() {
     jumlah_buku: 0,
     ketersediaan: "",
     cover_buku: null,
+    deskripsi:""
   });
 
   const handleChange = (e) => {
@@ -247,6 +248,23 @@ function TambahBuku() {
                         className="min-w-full p-2 bg-slate-400"
                         type="text"
                         name="ketersediaan"
+                        onChange={handleChange}
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-1 w-[150px]">
+                      <div className="flex flex-row justify-between">
+                        <div>Deskripsi</div>
+                        <div>:</div>
+                      </div>
+                    </td>
+                    <td className="p-1">
+                      <input
+                        className="min-w-full p-2 bg-slate-400"
+                        type="text"
+                        name="deskripsi"
                         onChange={handleChange}
                         required
                       />

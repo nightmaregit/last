@@ -1,7 +1,6 @@
 const express = require('express')
 const router =express.Router()
 const db = require('../data/database.js')
-const cors = require('cors')
 const { verify,petugasonly } = require("../controllers/auth");
 
 
@@ -52,17 +51,18 @@ router.post('/api/buku', upload.single('cover_buku'),verify,petugasonly, (req, r
     isbn_issn,
     jumlah_buku,
     ketersediaan,
+    deskripsi,
   } = req.body;
 
   const cover_buku = req.file ? req.file.filename : null;
 
   // Query untuk menyimpan data buku ke tabel
-  const query = `INSERT INTO tb_buku (judul_buku, kode_buku, penerbit_buku, bahasa_buku, lokasi_buku, isbn_issn, jumlah_buku, ketersediaan, cover_buku) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const query = `INSERT INTO tb_buku (judul_buku, kode_buku, penerbit_buku, bahasa_buku, lokasi_buku, isbn_issn, jumlah_buku, ketersediaan, cover_buku,deskripsi) 
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`;
 
   db.query(
     query,
-    [judul_buku, kode_buku, penerbit_buku, bahasa_buku, lokasi_buku, isbn_issn, jumlah_buku, ketersediaan, cover_buku],
+    [judul_buku, kode_buku, penerbit_buku, bahasa_buku, lokasi_buku, isbn_issn, jumlah_buku, ketersediaan, cover_buku, deskripsi],
     (err, result) => {
       if (err) {
         console.error('Gagal menyimpan data buku: ' + err.message);

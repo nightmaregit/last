@@ -22,6 +22,15 @@ const PORT = 3102
 const app = express();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
+app.use(session({
+    secret:process.env.SESS_SECRET,
+    resave: false,
+    store: store,
+    saveUninitialized: true,
+    cookie:{
+        secure: 'auto'
+    }
+}));
 
 
 
