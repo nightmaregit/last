@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BorrowedBooksProvider } from "./BorrowedBooksProvider";
+
 import Beranda from "./pages/Beranda";
 import Koleksi from "./pages/Koleksi";
 import Layanan from "./pages/Layanan";
@@ -32,6 +34,8 @@ import TambahAkunAdmin from "./admin/TambahAkunAdmin";
 // import Buku_komik from './pages/Buku_komik'
 function App() {
   return (
+    <BorrowedBooksProvider>
+
     <Router>
       <Routes>
         <Route path="/" element={<Beranda />}></Route>
@@ -59,7 +63,7 @@ function App() {
         <Route
           path="/koleksi/pendidikan/Buku-Siswa-Ekonomi-Kelas-XI-SMA/bukti"
           element={<Bukti />}
-        ></Route>
+          ></Route>
         {/* Buku-perpustakaan */}
         <Route path="/koleksi/pendidikan" element={<Buku_pendidikan />}></Route>
         <Route path="/koleksi/novel" element={<Buku_novel />}></Route>
@@ -70,28 +74,29 @@ function App() {
         <Route
           path="/admin/databuku/tambahbuku"
           element={<TambahBuku />}
-        ></Route>
+          ></Route>
         <Route path="/admin/databuku/editbuku" element={<EditBuku />}></Route>
         <Route
           path="/admin/peminjaman-buku"
           element={<PeminjamanBuku />}
-        ></Route>
+          ></Route>
         <Route
           path="/admin/pengembalian-buku"
           element={<PengembalianBuku />}
-        ></Route>
+          ></Route>
         <Route path="/admin/data-anggota" element={<DataAnggota />}></Route>
         <Route
           path="/admin/edit-akun-admin"
           element={<EditAkunAdmin />}
-        ></Route>
+          ></Route>
         <Route
           path="/admin/tambah-akun-admin"
           element={<TambahAkunAdmin />}
-        ></Route>
+          ></Route>
         <Route path="/admin/administrator" element={<Administrator />}></Route>
       </Routes>
     </Router>
+          </BorrowedBooksProvider>
   );
 }
 
