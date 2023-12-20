@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { BorrowedBooksContext } from "../BorrowedBooksProvider";
 
 const Detail_buku = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id_buku } = useParams();
+  const { addBorrowedBook } = React.useContext(BorrowedBooksContext);
+
+  const handlePinjamClick = useCallback(() => {
+    if (books) {
+      addBorrowedBook(books);
+      alert("Buku berhasil dipinjam!");
+    }
+  }, [books, addBorrowedBook]);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -117,7 +128,10 @@ const Detail_buku = () => {
                 <button className="px-4 focus:text-pink-500">
                   Sample Button
                 </button>
-                <button className="bg-masuk w-24 h-8 rounded-full text-white hover:bg-perpus hover:text-black border border-black">
+                <button
+                  onClick={handlePinjamClick}
+                  className="bg-masuk w-24 h-8 rounded-full text-white hover:bg-perpus hover:text-black border border-black"
+                >
                   Pinjam
                 </button>
               </form>
