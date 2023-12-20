@@ -55,10 +55,7 @@ function App() {
           path="/profil/koleksi-pinjaman"
           element={<Koleksi_pinjaman />}
         ></Route>
-        <Route
-          path="/koleksi/pendidikan/Buku-Siswa-Ekonomi-Kelas-XI-SMA"
-          element={<Detail_buku />}
-        ></Route>
+        <Route path="/detail/:id_buku" element={<Detail_buku />}></Route>
         <Route
           path="/koleksi/pendidikan/Buku-Siswa-Ekonomi-Kelas-XI-SMA/bukti"
           element={<Bukti />}

@@ -19,7 +19,7 @@ router.get('/api/buku',(req, res)=>{
     })
 })
 
-router.get("/data-buku/v1/:id_buku", (req, res) => {
+router.get("/api/buku/:id_buku", (req, res) => {
   const id = req.params.id_buku;
   const sql = `SELECT * FROM tb_buku WHERE id_buku = ${id}`;
   db.query(sql, (err, fild) => {
